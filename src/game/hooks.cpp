@@ -132,6 +132,28 @@ void EnemyAlertGain(X86Context& ctx, uint8_t*) {
 // before subss xmm0, [m_AreaFearDecay] in XFearFactor::UpdateAreaFear
 void AreaFearDrain(X86Context& ctx, uint8_t*) { AddBefore(ctx, 0, -std::bit_cast<float>(kernel::R32(kAreaFearDecay))); }
 
+void ScaleAdd(X86Context& ctx, int reg, uint32_t step_address) {
+    if (ShortFrame()) {
+        const float step = std::bit_cast<float>(kernel::R32(step_address));
+        ctx.xmm[reg].f[0] -= step * (1.0f - Scale());
+    }
+}
+
+void ScaleSub(X86Context& ctx, int reg, uint32_t step_address) {
+    if (ShortFrame()) {
+        const float step = std::bit_cast<float>(kernel::R32(step_address));
+        ctx.xmm[reg].f[0] += step * (1.0f - Scale());
+    }
+}
+
+// Helicopter path and acceleration use constants tuned for one 30 FPS step.
+void HelicopterPathSub(X86Context& ctx, uint8_t*) { ScaleSub(ctx, 0, 0x2E46F8); }
+void HelicopterPathAdd(X86Context& ctx, uint8_t*) { ScaleAdd(ctx, 0, 0x2FF4CC); }
+void HelicopterPathSub2(X86Context& ctx, uint8_t*) { ScaleSub(ctx, 0, 0x2E5110); }
+void HelicopterAccelerationAdd(X86Context& ctx, uint8_t*) { ScaleAdd(ctx, 1, 0x2E46F8); }
+void HelicopterAccelerationAdd2(X86Context& ctx, uint8_t*) { ScaleAdd(ctx, 1, 0x2FF4CC); }
+void HelicopterAccelerationSub(X86Context& ctx, uint8_t*) { ScaleSub(ctx, 1, 0x2E5110); }
+
 // after 0x7832C in MoveNormal: xmm0 is the turn this frame, xmm3 the angle still to turn, so their ratio is a share of
 // the gap per frame, like the speed factor's.
 void HeroTurnLerp(X86Context& ctx, uint8_t*) {

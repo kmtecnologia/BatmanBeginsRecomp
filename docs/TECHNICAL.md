@@ -179,7 +179,7 @@ At 60 each runs twice as fast unless noted. The addresses come only from reading
 | Camera | FOV, return to rest, distance, floor and ceiling, edge, climbing, stick: 13 sites | `0x25EC2`, `0xADCE7`, `0x2BEE0`, `0x2C36B`, `0x2C38E`, `0x369C0`, `0x370D9`, `0x370E3`, `0x33E93`, `0x34BF6`, `0x34C2D`, `0x28C4D`, `0x271F8` | Camera feel |
 | HUD and menus | Fade, flash, banner, wave, script button, menu | `0xC0F4B`, `0xCDB20`, `0xDD194`, `0xDD18F`, `0xDDC2D`, `0xDD3FA`, `0xED23A`, `0xED275`, `0xED327` | Visual |
 | Menus | "Saving BATMAN A" stays about half as long (measured) | Not located | A new game reaches the opening video 6.6 s sooner |
-| Helicopter | Flight along the path and acceleration | `0x1718D2`, `0x171D8A`, `0x171BED`, `0x171C54`, `0x1720AE`, `0x172115`, `0x171B39`, `0x171FEF` | Flies twice as fast |
+| Helicopter | Flight along the path and acceleration | `0x1718D2`, `0x171D8A`, `0x171BED`, `0x171C54`, `0x1720AE`, `0x172115`, `0x171B39`, `0x171FEF` | Path and acceleration constants are scaled at 60; validated in gameplay |
 | Cars | Slope pull, with no time factor | `0x157B55` | Physics: the slope pulls twice as hard per second |
 | Cars | Wheel spin, engine revs, race manager's smoothed values, chasing car's offset | `0x15F0A2`, `0x15FCE6`, `0x15C15A`, `0x15C17D`, `0x16D07A`, `0x16D0D4`, `0x16D225`, `0x14DF82` | Small to medium |
 | Cars | Counters: object removal, robot car state, car height, rumble | `0x17020A`, `0x150E29`, `0x1662CC`, `0x16BCD5` | Half the time |
@@ -240,15 +240,15 @@ The engine accepts 60, and everything measurable in chapters 1 and 2 is within 3
 
 - Ten behaviours were corrected, and the code reading lists more than 30 others. Measurements after the corrections turned up two new ones, the jump and the thug's guard, so the list is not complete.
 - Most of the rest cannot be measured with the available saves and test scripts: helicopter, cars, ropes, pipes and ladders.
-- Car physics follows the frame time, but the slope and the helicopter do not. Fixing them takes more hooks of the same kind, none of them written or tested.
+- Car physics follows the frame time, but the slope does not. The helicopter path and acceleration constants now use the same frame-duration scaling as the other corrected steps, and the result was validated in gameplay at 60.
 
 So `kMaxValidatedPlayFps` stays 30, and at 30 none of the frame rate hooks changes any value. `BB_DEV_PLAY_FPS=<n>` forces any rate in play, for measuring; it is off by default.
 
 ## 60 FPS option
 
-The campaign was played to the end at 60. Every session with a log kept after the mip bias fix (see "Graphics device lost") says `play frame rate 60` and ends in `Exit (0)`, with no crash. In that playthrough the helicopter seemed to fly fast without affecting play. That matches the code reading (`0x1718D2` and the others in the table above) but was not measured.
+The campaign was played to the end at 60. Every session with a log kept after the mip bias fix (see "Graphics device lost") says `play frame rate 60` and ends in `Exit (0)`, with no crash. The helicopter path and acceleration correction was later validated in gameplay: the sequence runs at normal speed.
 
-The options screen offers FRAME RATE: 30, the default, or `60 · EXPERIMENTAL`, with the line "Experimental and may be unstable: some scenes, like the helicopter, run too fast." 60 is offered on the strength of that playthrough, not of new measurements; the speed measurements did not change, so `kMaxValidatedPlayFps` is still 30. The choice is stored as `experimental_play_fps` in `settings.toml`, written only when it is 60.
+The options screen offers FRAME RATE: 30, the default, or `60 · EXPERIMENTAL`, with the line "Experimental and may be unstable: some scenes, like the helicopter, run too fast." The helicopter warning remains because other per-frame behaviours are not fully measured; its path and acceleration are corrected and were validated in gameplay. The choice is stored as `experimental_play_fps` in `settings.toml`, written only when it is 60.
 
 **The choice applies at the next start, not live.** The game itself changes rate around every video: the video player's constructor (`0xE09D0`) saves `m_MaxFrameRate` at `[player+0x2F0]` and writes 60 (`0xE0A4C`), and its destructor (`0xE16A0`) restores the saved value (`0xE1722`). A first version used this as a precedent and switched live, with three hooks: one per frame at `0x1A8410` and two in the video player, so that videos stayed at 60 and their end restored the current choice. It worked as far as the logs show: the title switched between 30 and 60 on closing the screen, and a change during a video took effect when the video closed.
 

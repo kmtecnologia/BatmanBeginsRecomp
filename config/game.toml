@@ -400,6 +400,30 @@ at = 0x82809
 call = "HeroLerpXmm1K005"
 
 [[hook]]
+at = 0x171B39
+call = "HelicopterPathSub"
+
+[[hook]]
+at = 0x171BED
+call = "HelicopterPathAdd"
+
+[[hook]]
+at = 0x171C54
+call = "HelicopterPathSub2"
+
+[[hook]]
+at = 0x171FEF
+call = "HelicopterAccelerationAdd"
+
+[[hook]]
+at = 0x1720AE
+call = "HelicopterAccelerationAdd2"
+
+[[hook]]
+at = 0x172115
+call = "HelicopterAccelerationSub"
+
+[[hook]]
 at = 0x728C7
 call = "HeroCapsuleXmm0K01"
 
