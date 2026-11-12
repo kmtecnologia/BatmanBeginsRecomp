@@ -14,7 +14,7 @@ da cópia do usuário; não há emulação nem BIOS do Xbox.
 ## Download
 
 Baixe o pacote para Windows x64 no
-[Release v1.0.0](https://github.com/kmtecnologia/BatmanBeginsRecomp/releases/tag/v1.0.0).
+[Release v1.1.0](https://github.com/kmtecnologia/BatmanBeginsRecomp/releases/tag/v1.1.0).
 
 Para instalação, controles, Proton e solução de problemas, consulte o
 [Guia do usuário](docs/GUIA.md).
@@ -26,6 +26,7 @@ Para instalação, controles, Proton e solução de problemas, consulte o
 - 30 FPS é o modo padrão do jogo.
 - 60 FPS está disponível como opção experimental; algumas cenas podem ficar
   rápidas demais.
+- A sequência do helicóptero foi corrigida e validada em gameplay a 60 FPS.
 - O Release Windows foi testado com sucesso no Linux através do Proton.
 - Não existe build nativo para Linux.
 - Steam Deck ainda não foi testado separadamente.
