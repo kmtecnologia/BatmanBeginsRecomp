@@ -6,11 +6,24 @@ no fork da KM Tecnologia.
 ## 1. Baixar o port
 
 Use o arquivo `BatmanBegins.zip` no
-[Release v1.0.0](https://github.com/kmtecnologia/BatmanBeginsRecomp/releases/tag/v1.0.0).
+[Release v1.1.0](https://github.com/kmtecnologia/BatmanBeginsRecomp/releases/tag/v1.1.0).
 O pacote contém o executável, o compilador usado na primeira execução e as
 licenças necessárias. Ele não contém o jogo.
 
-## 2. Adicionar o jogo
+## 2. Atualizar da versão 1.0.0
+
+1. Baixe o `BatmanBegins.zip` do Release `v1.1.0`.
+2. Extraia-o em uma nova pasta.
+3. Copie a pasta `assets` da instalação antiga para a nova, ou coloque nela
+   novamente a sua ISO.
+4. Copie `hdd`, `settings.toml` e, se desejar, `shaders.cache` da instalação
+   antiga para a nova.
+5. Execute o novo `BatmanBegins.exe`.
+
+Não é necessário copiar a pasta `compiler`; ela será recriada pela nova versão.
+Os saves ficam em `hdd\E\UDATA` e devem ser mantidos para continuar a campanha.
+
+## 3. Adicionar o jogo
 
 O port aceita somente a versão americana de Batman Begins para Xbox.
 
@@ -22,7 +35,7 @@ O port aceita somente a versão americana de Batman Begins para Xbox.
 O executável verifica a versão do `default.xbe` na inicialização. Outras regiões
 ou versões são recusadas.
 
-## 3. Primeira execução
+## 4. Primeira execução
 
 Execute `BatmanBegins.exe`. Uma janela de progresso recompila o código do jogo
 localmente. Esse processo acontece uma vez e pode levar de menos de um minuto a
@@ -35,7 +48,7 @@ cerca de 45 segundos.
 Não feche o jogo enquanto a mensagem de salvamento estiver na tela. Para sair,
 pause, use Save / Quit e salve o último checkpoint antes de pressionar Alt+F4.
 
-## 4. Linux usando Proton
+## 5. Linux usando Proton
 
 O executável distribuído é para Windows, mas foi testado com sucesso no Linux
 através do Proton.
@@ -49,7 +62,7 @@ através do Proton.
 Este projeto ainda não possui build nativo para Linux. Steam Deck não foi
 validado separadamente.
 
-## 5. Arquivos criados pelo jogo
+## 6. Arquivos criados pelo jogo
 
 Todos ficam na pasta do port:
 
@@ -64,7 +77,7 @@ Todos ficam na pasta do port:
 Depois que o jogo estiver pronto, a própria janela oferece a opção de remover
 os arquivos do compilador. Faça isso somente se não precisar recompilar.
 
-## 6. Solução de problemas
+## 7. Solução de problemas
 
 ### O jogo recusa o arquivo
 
@@ -86,7 +99,7 @@ alguns minutos; se a janela for fechada, o processo pode continuar depois.
 Isso pode ocorrer na primeira compilação de shaders. O cache é salvo em
 `shaders.cache` e os efeitos normalmente não repetem o mesmo atraso.
 
-## 7. Configurações recomendadas
+## 8. Configurações recomendadas
 
 - Use 30 FPS para a experiência mais próxima do comportamento original.
 - Use 60 FPS apenas como opção experimental.
