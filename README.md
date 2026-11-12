@@ -192,7 +192,7 @@ It is the game's own rate in play (videos run at 60). The engine handles most of
 No, only the pre-rendered videos. The skip borrows the video player's own end path, and scenes played in the engine have no such path to borrow.
 
 **Does it run on Linux or Steam Deck?**
-It has not been tried.
+The Windows release has been tested successfully on Linux through Proton. There is no native Linux build, and Steam Deck compatibility has not been tested separately.
 
 ## How it works
 
