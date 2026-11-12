@@ -107,7 +107,7 @@ Isso pode ocorrer na primeira compilação de shaders. O cache é salvo em
   widescreen.
 - A tela de opções abre com Esc, ou com Back + Start no controle.
 
-## 8. Desenvolvimento
+## 9. Desenvolvimento
 
 Para alterar o código, instale Visual Studio com desenvolvimento C++, ferramentas
 Clang e CMake, além de Git e Python 3.10 ou superior. Os testes e instruções de
