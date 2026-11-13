@@ -17,12 +17,11 @@ inline uint32_t EffectiveFpsCap(uint32_t requested, uint32_t refresh_hz, uint32_
 
 inline constexpr uint32_t kShippedPlayFps = 30;
 
-// The highest rate in play that passed the speed checks. 60 did not: too many steps tuned per frame remain, some in places
-// that cannot be measured here. See docs/TECHNICAL.md, "Frame rate".
+// The highest rate in play that passed the speed checks. Keep 30 as the default until every remaining
+// per-frame behaviour has been measured. See docs/TECHNICAL.md, "Frame rate".
 inline constexpr uint32_t kMaxValidatedPlayFps = kShippedPlayFps;
 
-// The whole campaign has been played at 60, so the options screen offers it, marked as experimental, since the steps
-// above still run fast in places, the helicopter among them. See docs/TECHNICAL.md, "60 FPS option".
+// The whole campaign has been played at 60, so the options screen offers it as an alternate rate.
 inline constexpr uint32_t kExperimentalPlayFps = 60;
 
 // The rate the game asks for in play, m_MaxFrameRate in the engine: experimental_play_fps in the settings file, which the

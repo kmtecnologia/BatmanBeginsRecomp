@@ -24,8 +24,8 @@ Para instalação, controles, Proton e solução de problemas, consulte o
 - Campanha jogada até os créditos.
 - Menus, vídeos, salvamento, teclado e controles funcionando.
 - 30 FPS é o modo padrão do jogo.
-- 60 FPS está disponível como opção experimental; algumas cenas podem ficar
-  rápidas demais.
+- 60 FPS está disponível como opção nas configurações; 30 FPS continua sendo
+  o modo padrão.
 - A sequência do helicóptero foi corrigida e validada em gameplay a 60 FPS.
 - O Release Windows foi testado com sucesso no Linux através do Proton.
 - Não existe build nativo para Linux.

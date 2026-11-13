@@ -102,7 +102,7 @@ Isso pode ocorrer na primeira compilação de shaders. O cache é salvo em
 ## 8. Configurações recomendadas
 
 - Use 30 FPS para a experiência mais próxima do comportamento original.
-- Use 60 FPS apenas como opção experimental.
+- 60 FPS está disponível nas configurações; 30 FPS continua sendo o padrão.
 - Use 4:3 para manter a proporção original dos menus e HUD, ou 16:9 para
   widescreen.
 - A tela de opções abre com Esc, ou com Back + Start no controle.

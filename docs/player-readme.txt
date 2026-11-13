@@ -60,11 +60,11 @@ Scenes played in the game's engine cannot be skipped. This is on purpose.
 
 PICTURE AND SPEED
 
-In play the picture runs at 30 FPS. That is the game's own rate, not a defect.
+In play the picture runs at 30 FPS by default. That is the game's own rate, not a defect.
 
-FRAME RATE, on the options screen, offers 60. It is experimental: the whole game has
-been played that way, but some parts run too fast, such as the helicopter's flight,
-and it may be unstable. A change takes effect the next time the game starts.
+FRAME RATE, on the options screen, also offers 60 for smoother play. The helicopter's
+flight has been corrected and tested at that rate. A change takes effect the next time
+the game starts.
 
 At 16:9 the menus and the HUD are 33% wider, as in the original game on a console
 connected to a widescreen TV. To see them in their 4:3 shape, choose 4:3 in ASPECT

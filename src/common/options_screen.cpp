@@ -756,7 +756,7 @@ std::string ValueOf(int row) {
         case kRowAspect: return app::Widescreen() ? "16:9" : "4:3";
         case kRowFilter: return s.aniso ? std::to_string(s.aniso) + "x" : "OFF";
         case kRowVsync: return s.vsync ? "ON" : "OFF";
-        case kRowFrameRate: return g_play_rate.Chosen() == kExperimentalPlayFps ? "60 · EXPERIMENTAL" : "30";
+        case kRowFrameRate: return g_play_rate.Chosen() == kExperimentalPlayFps ? "60" : "30";
         default: return {};
     }
 }
@@ -775,10 +775,10 @@ const char* DescriptionOf(int row) {
         case kRowVsync: return "Prevents screen tearing by syncing with the monitor. Does not change the speed.";
         case kRowFrameRate:
             if (g_play_rate.Chosen() == kExperimentalPlayFps)
-                return g_play_rate.WaitsForRestart() ? "Experimental and may be unstable. Takes effect the next time the game starts."
-                                                     : "Experimental and may be unstable: some scenes, like the helicopter, run too fast.";
+                return g_play_rate.WaitsForRestart() ? "Takes effect the next time the game starts."
+                                                     : "60 is smoother than the original 30 FPS mode.";
             return g_play_rate.WaitsForRestart() ? "The game's own rate. Takes effect the next time the game starts."
-                                                 : "The game's own rate. 60 is smoother, but experimental.";
+                                                 : "The game's own 30 FPS rate.";
         default: return "";
     }
 }

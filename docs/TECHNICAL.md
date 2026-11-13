@@ -82,7 +82,7 @@ The save menu said "Your Xbox doesn't have enough free blocks" with every slot e
 
 ## Frame rate
 
-The game keeps its own rates: 30 frames per second in play, menus included, and 60 while a video plays. That is the validated configuration. 60 in play is offered as an experimental option (see "60 FPS option"). At 60, ten per-frame behaviours were corrected, a reading of the code lists more than 30 others, and measurements after the corrections found two more.
+The game keeps its own rates: 30 frames per second in play, menus included, and 60 while a video plays. That is the original configuration. 60 in play is offered as an alternate option (see "60 FPS option"). At 60, ten per-frame behaviours were corrected, a reading of the code lists more than 30 others, and measurements after the corrections found two more.
 
 ### How the engine keeps time
 
@@ -248,7 +248,7 @@ So `kMaxValidatedPlayFps` stays 30, and at 30 none of the frame rate hooks chang
 
 The campaign was played to the end at 60. Every session with a log kept after the mip bias fix (see "Graphics device lost") says `play frame rate 60` and ends in `Exit (0)`, with no crash. The helicopter path and acceleration correction was later validated in gameplay: the sequence runs at normal speed.
 
-The options screen offers FRAME RATE: 30, the default, or `60 · EXPERIMENTAL`, with the line "Experimental and may be unstable: some scenes, like the helicopter, run too fast." The helicopter warning remains because other per-frame behaviours are not fully measured; its path and acceleration are corrected and were validated in gameplay. The choice is stored as `experimental_play_fps` in `settings.toml`, written only when it is 60.
+The options screen offers FRAME RATE: 30, the default, or `60`. The helicopter path and acceleration are corrected and were validated in gameplay. Other per-frame behaviours are not exhaustively measured, so 30 remains the default. The choice is stored as `experimental_play_fps` in `settings.toml`, written only when it is 60.
 
 **The choice applies at the next start, not live.** The game itself changes rate around every video: the video player's constructor (`0xE09D0`) saves `m_MaxFrameRate` at `[player+0x2F0]` and writes 60 (`0xE0A4C`), and its destructor (`0xE16A0`) restores the saved value (`0xE1722`). A first version used this as a precedent and switched live, with three hooks: one per frame at `0x1A8410` and two in the video player, so that videos stayed at 60 and their end restored the current choice. It worked as far as the logs show: the title switched between 30 and 60 on closing the screen, and a change during a video took effect when the video closed.
 
